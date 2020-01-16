@@ -7,4 +7,15 @@ This is a command line application that allows a user to create, search, update,
 
 ## Getting Started
 1. Fork and clone down this repo
-2. 
+2. Install dependencies
+```
+pip install peewee psycopg2
+```
+3. Run `python3` main.py
+
+## Features
+
+  * Search for a contact by name
+  * Create a contact
+  * Update a contact
+  * Delete contact
