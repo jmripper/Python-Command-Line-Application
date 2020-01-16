@@ -25,14 +25,20 @@ class Contact(BaseModel):
 # Create tables
 db.create_tables([Contact])
 
-person = input("Welcome! Type 'create' to create a new contact")
+person = input("Welcome! Type 'create' to create a new contact: ")
 
-# if person == 'create':
-#     name = input("New contact's name:")
-#     address = input("Contact's address:")
-#     phone = int(input("Contact's phone number:"))
-#     email = input("Contact's email address:")
-#     birthday = int(input("Contact's birthday (YY/MM/DD):"))
-#     new_person = contact(name=name, address=address, phone=phone, email=email, birthday=birthday)
-#     new_person.save()
-#     print()
+if person == 'create':
+    name = input("New contact's name:")
+    address = input("Contact's address:")
+    phone = int(input("Contact's phone number:"))
+    email = input("Contact's email address:")
+    birthday = input("Contact's birthday (YY/MM/DD):")
+    new_person = Contact(name=name, address=address, phone=phone, email=email, birthday=birthday)
+    new_person.save()
+    print("")
+    print("Congrats your information has been saved! Just to confirm this is the most up to date information...")
+    print("")
+    print(f"Name: {new_person.name}")
+    print(f"Address: {new_person.address}")
+    print(f"Phone Number: {new_person.phone}")
+    print(f"Email: {new_person.email}")
