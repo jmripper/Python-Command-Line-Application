@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4edd8fb46d31e672b0fa60f3aeba7aaba3d63d060eb650c11382b76924757436"
+            "sha256": "7cefc2fd7f5ff204512916121279e280ccacbe27e87882ac39bce092bf2e80d8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,13 @@
         ]
     },
     "default": {
+        "peewee": {
+            "hashes": [
+                "sha256:9492af4d1f8e18a7fa0e930960315b38931286ea0f1659bbd5503456cffdacde"
+            ],
+            "index": "pypi",
+            "version": "==3.13.1"
+        },
         "psycopg2": {
             "hashes": [
                 "sha256:4212ca404c4445dc5746c0d68db27d2cbfb87b523fe233dc84ecd24062e35677",
