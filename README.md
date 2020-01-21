@@ -15,7 +15,7 @@ pip install peewee psycopg2
 
 ## Features
 
-  * Search for a contact by name
-  * Create a contact
+  * Search for an individual contact by name
+  * Create a new contact
   * Update a contact
-  * Delete contact
+  * Delete a contact
