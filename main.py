@@ -52,6 +52,7 @@ class ContactBook:
         new_person = Contact(name=name, address=address, phone=phone, email=email, birthday=birthday)
         new_person.save()
         print("\nCongrats your information has been saved!")
+        contact_book.options()
 
     def update(self):
         find_name = input("\nSearch for Contact's Information to Update: ")
@@ -72,6 +73,7 @@ class ContactBook:
         update.email = new_email
         update.save()
         print("\nThis contact has been updated!")
+        contact_book.options()
 
     def search(self):
         search_info = input("\nName of the contact your searching for: ")
@@ -83,12 +85,14 @@ class ContactBook:
         print(f"Email: {person_info.email}")
         print(f"Birthday: {person_info.birthday}")
         print("")
+        contact_book.options()
 
     def remove(self):
         remove = input("\nSearch by Name to remove the contact: ")
         remove_person = Contact.get(Contact.name == remove)
         remove_person.delete_instance()
         print("\nContact has been removed.")
+        contact_book.options()
    
 contact_book = ContactBook()
 contact_book.options()
