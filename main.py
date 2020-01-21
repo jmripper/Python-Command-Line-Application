@@ -6,13 +6,11 @@ db = PostgresqlDatabase('contact_book', user='postgres', password='',
 
 db.connect()
 
-
 class BaseModel(Model):
     class Meta:\
         database = db
 
 # create base model class of Contact
-
 
 class Contact(BaseModel):
     name = CharField()
@@ -29,7 +27,7 @@ print("Welcome to Your Contact Book!")
 class ContactBook:
     def options(self):
         print("\nMAIN MENU:")
-        person = input("\nType 'create' to create a new contact \nType'update' a contact's information \nType 'search' to lookup a contact \nType 'remove' to remove a contact\n\n")
+        person = input("\nType 'create' to create a new contact \nType'update' a contact's information \nType 'search' to lookup a contact \nType 'remove' to remove a contact\nType 'all' to view all contacts\n")
         if person == "create":
             self.create()
         elif person == "update":
@@ -38,6 +36,8 @@ class ContactBook:
             self.search()
         elif person == "remove":
             self.remove()
+        elif person =="all":
+            self.all()
         else:
             print("Sorry that's not an option. Bye!")
             exit()
@@ -55,7 +55,7 @@ class ContactBook:
         contact_book.options()
 
     def update(self):
-        find_name = input("\nSearch for Contact's Information to Update: ")
+        find_name = input("\nSearch for Contact's Information by Fullname to Update: ")
         update = Contact.get(Contact.name == find_name)
         print("")
         print(update.name)
@@ -93,7 +93,10 @@ class ContactBook:
         remove_person.delete_instance()
         print("\nContact has been removed.")
         contact_book.options()
+    
+    def all(self):
+        all = Contact.select()
+        print(f"{all}")
    
 contact_book = ContactBook()
 contact_book.options()
-
