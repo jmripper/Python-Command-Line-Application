@@ -11,7 +11,6 @@ class BaseModel(Model):
         database = db
 
 # create base model class of Contact
-
 class Contact(BaseModel):
     name = CharField()
     address = CharField()
@@ -27,7 +26,7 @@ print("Welcome to Your Contact Book!")
 class ContactBook:
     def options(self):
         print("\nMAIN MENU:")
-        person = input("\nType 'create' to create a new contact \nType'update' a contact's information \nType 'search' to lookup a contact \nType 'remove' to remove a contact\nType 'all' to view all contacts\n")
+        person = input("\nType 'create' to create a new contact \nType 'update' a contact's information \nType 'search' to lookup a contact \nType 'remove' to remove a contact\n\n")
         if person == "create":
             self.create()
         elif person == "update":
@@ -36,8 +35,6 @@ class ContactBook:
             self.search()
         elif person == "remove":
             self.remove()
-        elif person =="all":
-            self.all()
         else:
             print("Sorry that's not an option. Bye!")
             exit()
@@ -76,16 +73,20 @@ class ContactBook:
         contact_book.options()
 
     def search(self):
-        search_info = input("\nName of the contact your searching for: ")
-        person_info = Contact.get(Contact.name == search_info)
-        print("")
-        print(f"Name: {person_info.name}")
-        print(f"Address: {person_info.address}")
-        print(f"Phone: {person_info.phone}")
-        print(f"Email: {person_info.email}")
-        print(f"Birthday: {person_info.birthday}")
-        print("")
-        contact_book.options()
+        search_info = input("\nFullname of the contact your searching for: ")
+        search = Contact.select().where(Contact.name == search_info)
+        # person_info = Contact.get(Contact.name == search_info)
+        for person in search:
+            print("")
+            print(f"Name: {person.name}")
+            print(f"Address: {person.address}")
+            print(f"Phone: {person.phone}")
+            print(f"Email: {person.email}")
+            print(f"Birthday: {person.birthday}")
+            print("")
+        else:
+            print("\nSorry that person does not exist.")
+            contact_book.options()
 
     def remove(self):
         remove = input("\nSearch by Name to remove the contact: ")
@@ -93,10 +94,6 @@ class ContactBook:
         remove_person.delete_instance()
         print("\nContact has been removed.")
         contact_book.options()
-    
-    def all(self):
-        all = Contact.select()
-        print(f"{all}")
    
 contact_book = ContactBook()
 contact_book.options()
